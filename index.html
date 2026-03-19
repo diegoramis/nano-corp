@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CorpoNanos | Soluciones iTALKPTT para Honduras</title>
+  <meta name="description" content="CorpoNanos es representante para Honduras de iTALKPTT LATAM. Radios inteligentes, comunicación instantánea, GPS, rondines, monitoreo y consola de control en la nube." />
+  <style>
+    :root{
+      --bg:#09111f;
+      --bg-soft:#0f1d33;
+      --card:#ffffff;
+      --primary:#0f63b6;
+      --primary-2:#2ea4ff;
+      --text:#132033;
+      --muted:#607089;
+      --line:#dce7f4;
+      --accent:#e8f4ff;
+      --success:#0f8d58;
+      --shadow:0 20px 50px rgba(6,23,45,.12);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:#f4f8fc;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 2rem));margin:0 auto}
+    .topbar{background:#05101d;color:#d9e8ff;font-size:.95rem}
+    .topbar .container{display:flex;gap:1rem;justify-content:space-between;align-items:center;padding:.75rem 0;flex-wrap:wrap}
+    .topbar a{color:#d9e8ff}
+    header{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(255,255,255,.88);border-bottom:1px solid rgba(15,99,182,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.85rem;font-weight:800;color:#0f1d33}
+    .brand img{width:56px;height:auto;border-radius:10px}
+    .brand small{display:block;font-weight:600;color:var(--muted);letter-spacing:.02em}
+    .menu{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+    .menu a{color:#27405f;font-weight:600}
+    .toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+    .lang-switch{display:flex;gap:.4rem;background:#eef5fc;padding:.25rem;border-radius:999px;border:1px solid #d7e5f5}
+    .lang-switch button{border:0;background:transparent;padding:.5rem .8rem;border-radius:999px;font-weight:800;cursor:pointer;color:#36506f}
+    .lang-switch button.active{background:white;box-shadow:0 2px 8px rgba(10,40,70,.08);color:var(--primary)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.25rem;border-radius:999px;font-weight:800;border:0;cursor:pointer;transition:.2s transform,.2s box-shadow,.2s opacity}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:white;box-shadow:0 16px 40px rgba(15,99,182,.25)}
+    .btn-secondary{background:white;color:var(--primary);border:1px solid #cfe3fb}
+    .hero{background:radial-gradient(circle at top left, rgba(46,164,255,.25), transparent 28%),radial-gradient(circle at top right, rgba(15,99,182,.16), transparent 20%),linear-gradient(135deg,#08111f 0%,#0d1b30 46%,#123a66 100%);color:white;padding:4.5rem 0 3.5rem;overflow:hidden;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:.5rem .8rem;border-radius:999px;font-weight:700;font-size:.92rem;color:#dcecff}
+    h1{font-size:clamp(2.2rem,4vw,4.3rem);line-height:1.02;margin:.9rem 0 1rem}
+    .hero p{font-size:1.08rem;color:#d8e7fb;max-width:720px}
+    .hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:28px;padding:1.2rem;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
+    .stat{background:rgba(255,255,255,.08);padding:1rem;border-radius:18px;border:1px solid rgba(255,255,255,.1)}
+    .stat strong{display:block;font-size:1.55rem;color:white}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+    .section{padding:4.2rem 0}
+    .section-title{max-width:780px;margin:0 auto 2rem;text-align:center}
+    .section-title h2{font-size:clamp(1.8rem,3vw,3rem);margin:0 0 .6rem}
+    .section-title p{color:var(--muted);margin:0}
+    .grid-3,.grid-2,.grid-4{display:grid;gap:1.25rem}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-4{grid-template-columns:repeat(4,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);border-radius:var(--radius);padding:1.35rem;border:1px solid #e5eef8;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .5rem;font-size:1.15rem}
+    .card p{margin:0;color:#5c6d86}
+    .icon{width:48px;height:48px;border-radius:14px;background:var(--accent);display:grid;place-items:center;color:var(--primary);font-weight:900;margin-bottom:.9rem;font-size:1.15rem}
+    .band{background:linear-gradient(180deg,#f7fbff,#eef5fc)}
+    .feature-list{display:grid;gap:.8rem;margin-top:1rem}
+    .feature-item{display:flex;gap:.85rem;align-items:flex-start;padding:.85rem 1rem;border-radius:16px;background:#f7fbff;border:1px solid #e1edf9}
+    .check{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#dcf8ea;color:var(--success);font-weight:900;flex:0 0 auto}
+    .media-card{overflow:hidden;padding:0}
+    .scroll-media{max-height:560px;overflow-y:auto;overflow-x:hidden;background:#fff;border-bottom:1px solid #e5eef8}
+    .scroll-media img{width:100%;height:auto;object-fit:contain;display:block}
+    .hero-card .card h3{color:#000}
+    .hero-card .feature-item strong,.hero-card .feature-item span{color:#000}
+    .media-card .content{padding:1.2rem 1.2rem 1.3rem}
+    .pill-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .pill{padding:.55rem .85rem;border-radius:999px;background:#eef6ff;color:#0e58a0;font-weight:700;border:1px solid #d4e7ff}
+    .cta{background:linear-gradient(135deg,#0e1a2c 0%,#103f71 100%);color:white;border-radius:32px;padding:2rem;box-shadow:0 25px 60px rgba(9,17,31,.2)}
+    .cta p{color:#d9e8ff}
+    .footer{background:#07101d;color:#d5e3f7;padding:2rem 0 2.5rem;margin-top:3rem}
+    .footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
+    .footer h4{margin:0 0 .7rem}
+    .small{font-size:.95rem;color:#7890af}
+    .contact-list{display:grid;gap:.55rem}
+    .notice{background:#fff9ea;border:1px solid #f5df9d;color:#7a6110;padding:1rem 1.1rem;border-radius:16px;margin-top:1rem}
+    @media (max-width: 980px){
+      .hero-grid,.grid-4,.grid-3,.grid-2,.footer-grid{grid-template-columns:1fr}
+      .menu{display:none}
+      .hero-stats{grid-template-columns:1fr}
+      .section{padding:3.2rem 0}
+      h1{max-width:12ch}
+      .nav{align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div data-i18n="topbar_left">CorpoNanos · Representante para Honduras de iTALKPTT LATAM</div>
+      <div><a href="mailto:diego.ramis@nano-corp.net" data-i18n="topbar_right">Solicitar información o cotización</a></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <img src="corponanos_logo.png" alt="Logo CorpoNanos" />
+        <div>
+          CorpoNanos
+          <small data-i18n="brand_sub">Soluciones de radiocomunicación inteligente</small>
+        </div>
+      </a>
+      <div class="toolbar">
+        <nav class="menu">
+          <a href="#solucion" data-i18n="nav_solution">Solución</a>
+          <a href="#equipos" data-i18n="nav_equipment">Equipos</a>
+          <a href="#panel" data-i18n="nav_panel">Panel de control</a>
+          <a href="#ventajas" data-i18n="nav_advantages">Ventajas</a>
+          <a href="#contacto" class="btn btn-primary" data-i18n="nav_quote">Cotizar</a>
+        </nav>
+        <div class="lang-switch" aria-label="Language selector">
+          <button class="active" data-lang="es">ES</button>
+          <button data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" data-i18n="hero_eyebrow">Comunicación inmediata · GPS · Supervisión · Seguridad operativa</div>
+          <h1 data-i18n="hero_title">La nueva generación de comunicación crítica para empresas en Honduras</h1>
+          <p data-i18n="hero_desc">CorpoNanos pone a su disposición la tecnología de iTALKPTT LATAM para transformar la comunicación operativa en seguridad, logística, transporte, supervisión y operaciones de campo. Una solución integral con radios inteligentes, localización en tiempo real, rondines, control de turnos y consola en la nube.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:diego.ramis@nano-corp.net?subject=Solicitud%20de%20cotizaci%C3%B3n%20iTALKPTT%20-%20CorpoNanos" data-i18n="hero_cta_primary">Solicitar cotización</a>
+            <a class="btn btn-secondary" href="#solucion" data-i18n="hero_cta_secondary">Ver solución</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>125,000+</strong><span data-i18n="stat_1">radios en la red global iTALKPTT</span></div>
+            <div class="stat"><strong data-i18n="stat_2_title">Nacional e internacional</strong><span data-i18n="stat_2">comunicación donde haya red celular o Wi‑Fi</span></div>
+            <div class="stat"><strong data-i18n="stat_3_title">Control total</strong><span data-i18n="stat_3">visibilidad, reportes y auditoría desde la nube</span></div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="card" style="margin:0;background:rgba(255,255,255,.96)">
+            <h3 style="margin-top:0" data-i18n="ideal_title">Ideal para operaciones que no pueden fallar</h3>
+            <div class="feature-list">
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ideal_1_t">Comunicación instantánea ilimitada</strong><br><span data-i18n="ideal_1_d">Canales y conversaciones sin las limitaciones de los radios tradicionales.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ideal_2_t">Monitoreo en tiempo real</strong><br><span data-i18n="ideal_2_d">Ubicación GPS, estatus de señal, batería y actividad operativa.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ideal_3_t">Respuesta a emergencias</strong><br><span data-i18n="ideal_3_d">Botón de pánico, protocolos y trazabilidad de eventos.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ideal_4_t">Supervisión inteligente</strong><br><span data-i18n="ideal_4_d">Rondines, asistencia, reportes automatizados y bitácora de comunicaciones.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucion">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-i18n="solution_title">Una solución más completa que un radio tradicional</h2>
+          <p data-i18n="solution_desc">iTALKPTT combina comunicación, supervisión, localización y control operativo en un solo ecosistema para operaciones modernas.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card"><div class="icon">01</div><h3 data-i18n="sol_1_t">Cobertura amplia</h3><p data-i18n="sol_1_d">Comunicación nacional e internacional en zonas con cobertura celular o Wi‑Fi, sin las limitaciones geográficas de la radio convencional.</p></article>
+          <article class="card"><div class="icon">02</div><h3 data-i18n="sol_2_t">GPS y geocercas</h3><p data-i18n="sol_2_d">Seguimiento minuto a minuto, rutas, tiempos detenidos, alertas y control de zonas predeterminadas.</p></article>
+          <article class="card"><div class="icon">03</div><h3 data-i18n="sol_3_t">Rondines y control de turnos</h3><p data-i18n="sol_3_d">El sistema permite validar rondas y apoyar procesos de entradas y salidas con NFC y reportes automáticos.</p></article>
+          <article class="card"><div class="icon">04</div><h3 data-i18n="sol_4_t">Bitácora en la nube</h3><p data-i18n="sol_4_d">Registro de comunicaciones, reportes de batería, radios en línea y trazabilidad para auditoría y supervisión.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="equipos">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-i18n="equipment_title">Equipos destacados para operaciones exigentes</h2>
+          <p data-i18n="equipment_desc">Basado en la propuesta adjunta, CorpoNanos promueve especialmente los modelos iTALK 200 e iTALK 660 para entornos de trabajo de alta demanda.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card media-card">
+            <div class="scroll-media">
+              <img src="equipos_italk.png" alt="Equipos iTALK 200 e iTALK 660" />
+            </div>
+            <div class="content">
+              <h3>iTALK 200 e iTALK 660</h3>
+              <p data-i18n="equipment_card_desc">Radios robustos con batería de alta capacidad, comunicación ilimitada, canales ilimitados, GPS, Wi‑Fi, botón de pánico y soporte para rondines.</p>
+              <div class="pill-row">
+                <span class="pill">Wi‑Fi</span>
+                <span class="pill">GPS</span>
+                <span class="pill">NFC</span>
+                <span class="pill" data-i18n="pill_panic">Botón de pánico</span>
+                <span class="pill" data-i18n="pill_battery">Batería alta capacidad</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <h3 data-i18n="key_benefits_title">Beneficios operativos clave</h3>
+            <div class="feature-list">
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ben_1_t">Batería de alta capacidad</strong><br><span data-i18n="ben_1_d">Mayor continuidad operativa durante toda la jornada.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ben_2_t">Comunicación ilimitada</strong><br><span data-i18n="ben_2_d">Sin preocupación por duración de llamadas o estructura de canales.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ben_3_t">Transmisión por Wi‑Fi</strong><br><span data-i18n="ben_3_d">Si no hay señal celular, el equipo puede conectarse automáticamente a una red Wi‑Fi disponible.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="ben_4_t">Mayor seguridad</strong><br><span data-i18n="ben_4_d">GPS, alarmas, rondines y mejor capacidad de respuesta ante incidentes.</span></div></div>
+            </div>
+            <div class="notice" data-i18n="notice_models">¿Necesita otros modelos? iTALKPTT también presenta equipos para seguridad profesional, supervisión de campo, centros de monitoreo, vehículos y radios intrínsecamente seguros para ambientes de mayor riesgo.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="panel">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-i18n="panel_title">Panel de control y consola de despacho en la nube</h2>
+          <p data-i18n="panel_desc">La operación no depende únicamente del radio: la verdadera ventaja está en la visibilidad y control que se obtiene desde la plataforma web.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3 data-i18n="console_title">Lo que puede hacer desde la consola</h3>
+            <div class="feature-list">
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="con_1_t">Monitoreo por GPS</strong><br><span data-i18n="con_1_d">Visualice ubicación, velocidad, ruta, tiempo detenido y geocercas.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="con_2_t">Comunicación directa sin radio</strong><br><span data-i18n="con_2_d">El despachador puede comunicarse desde computador o tablet con micrófono y audífonos.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="con_3_t">Activar o desactivar radios</strong><br><span data-i18n="con_3_d">Gestione equipos, canales y acciones remotas desde un mismo panel.</span></div></div>
+              <div class="feature-item"><div class="check">✓</div><div><strong data-i18n="con_4_t">Bitácora de grabaciones</strong><br><span data-i18n="con_4_d">Auditoría de comunicaciones y reportes automatizados para supervisión y cumplimiento.</span></div></div>
+            </div>
+          </article>
+          <article class="card media-card">
+            <div class="scroll-media">
+              <img src="panel_control.png" alt="Panel de control iTALKPTT" />
+            </div>
+            <div class="content">
+              <h3 data-i18n="web_access_title">Acceso web, sin instalar nada</h3>
+              <p data-i18n="web_access_desc">Solo se requiere conexión a internet y un navegador. Esto facilita la supervisión en tiempo real, el despacho y la toma de decisiones desde cualquier lugar.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="ventajas">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-i18n="advantages_title">Ventajas estratégicas para su empresa</h2>
+          <p data-i18n="advantages_desc">Además de la información de la propuesta, el sitio de iTALKPTT destaca una evolución hacia seguridad inteligente, supervisión avanzada y herramientas como PatrolSync, ShiftHero, TimeWeb Force, CloudCommand y PredictAI.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="icon">A</div><h3 data-i18n="adv_1_t">Más que comunicación</h3><p data-i18n="adv_1_d">La solución busca convertir la comunicación operativa en una ventaja competitiva mediante supervisión, trazabilidad y datos para la toma de decisiones.</p></article>
+          <article class="card"><div class="icon">B</div><h3 data-i18n="adv_2_t">Operación más segura</h3><p data-i18n="adv_2_d">Reduce dependencia de celulares personales en tareas críticas y fortalece el control en campo para empresas de seguridad, transporte y operaciones intensivas.</p></article>
+          <article class="card"><div class="icon">C</div><h3 data-i18n="adv_3_t">Escalabilidad empresarial</h3><p data-i18n="adv_3_d">El ecosistema incluye radios profesionales, tecnologías para rondines, gestión de turnos, despacho en la nube e iniciativas de inteligencia predictiva.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="cta">
+          <div class="grid-2" style="align-items:center">
+            <div>
+              <h2 style="margin-top:0" data-i18n="contact_title">Solicite información o una cotización personalizada</h2>
+              <p data-i18n="contact_desc">Para conocer disponibilidad, modelos recomendados, implementación en Honduras y una propuesta adaptada a su operación, escriba directamente a CorpoNanos.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="mailto:diego.ramis@nano-corp.net?subject=Informaci%C3%B3n%20sobre%20iTALKPTT%20con%20CorpoNanos" data-i18n="contact_cta">Escribir a diego.ramis@nano-corp.net</a>
+              </div>
+            </div>
+            <div class="card" style="background:rgba(255,255,255,.96);margin:0">
+              <h3 style="margin-top:0" data-i18n="general_data_title">Datos generales de CorpoNanos</h3>
+              <div class="contact-list">
+                <div><strong data-i18n="phone_label">Teléfono:</strong> (504) 2510-5511</div>
+                <div><strong data-i18n="email_label">Correo general:</strong> <a href="mailto:info@nano-corp.net" style="color:var(--primary)">info@nano-corp.net</a></div>
+                <div><strong>RTN:</strong> 08019022418378</div>
+                <div><strong data-i18n="sales_label">Contacto comercial:</strong> <a href="mailto:diego.ramis@nano-corp.net" style="color:var(--primary)">diego.ramis@nano-corp.net</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="color:white;margin-bottom:.8rem">
+          <img src="corponanos_logo.png" alt="Logo CorpoNanos" />
+          <div>
+            CorpoNanos
+            <small style="color:#98b2d4" data-i18n="footer_sub">Representante para Honduras de iTALKPTT LATAM</small>
+          </div>
+        </div>
+        <div class="small" data-i18n="footer_desc">Sitio estático informativo elaborado para presentar la propuesta comercial y capacidades de la plataforma iTALKPTT en Honduras.</div>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">Contacto</h4>
+        <div class="contact-list">
+          <div><a href="mailto:diego.ramis@nano-corp.net">diego.ramis@nano-corp.net</a></div>
+          <div><a href="mailto:info@nano-corp.net">info@nano-corp.net</a></div>
+          <div>(504) 2510-5511</div>
+          <div>RTN: 08019022418378</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      es: {
+        topbar_left: "CorpoNanos · Representante para Honduras de iTALKPTT LATAM",
+        topbar_right: "Solicitar información o cotización",
+        brand_sub: "Soluciones de radiocomunicación inteligente",
+        nav_solution: "Solución",
+        nav_equipment: "Equipos",
+        nav_panel: "Panel de control",
+        nav_advantages: "Ventajas",
+        nav_quote: "Cotizar",
+        hero_eyebrow: "Comunicación inmediata · GPS · Supervisión · Seguridad operativa",
+        hero_title: "La nueva generación de comunicación crítica para empresas en Honduras",
+        hero_desc: "CorpoNanos pone a su disposición la tecnología de iTALKPTT LATAM para transformar la comunicación operativa en seguridad, logística, transporte, supervisión y operaciones de campo. Una solución integral con radios inteligentes, localización en tiempo real, rondines, control de turnos y consola en la nube.",
+        hero_cta_primary: "Solicitar cotización",
+        hero_cta_secondary: "Ver solución",
+        stat_1: "radios en la red global iTALKPTT",
+        stat_2_title: "Nacional e internacional",
+        stat_2: "comunicación donde haya red celular o Wi‑Fi",
+        stat_3_title: "Control total",
+        stat_3: "visibilidad, reportes y auditoría desde la nube",
+        ideal_title: "Ideal para operaciones que no pueden fallar",
+        ideal_1_t: "Comunicación instantánea ilimitada",
+        ideal_1_d: "Canales y conversaciones sin las limitaciones de los radios tradicionales.",
+        ideal_2_t: "Monitoreo en tiempo real",
+        ideal_2_d: "Ubicación GPS, estatus de señal, batería y actividad operativa.",
+        ideal_3_t: "Respuesta a emergencias",
+        ideal_3_d: "Botón de pánico, protocolos y trazabilidad de eventos.",
+        ideal_4_t: "Supervisión inteligente",
+        ideal_4_d: "Rondines, asistencia, reportes automatizados y bitácora de comunicaciones.",
+        solution_title: "Una solución más completa que un radio tradicional",
+        solution_desc: "iTALKPTT combina comunicación, supervisión, localización y control operativo en un solo ecosistema para operaciones modernas.",
+        sol_1_t: "Cobertura amplia",
+        sol_1_d: "Comunicación nacional e internacional en zonas con cobertura celular o Wi‑Fi, sin las limitaciones geográficas de la radio convencional.",
+        sol_2_t: "GPS y geocercas",
+        sol_2_d: "Seguimiento minuto a minuto, rutas, tiempos detenidos, alertas y control de zonas predeterminadas.",
+        sol_3_t: "Rondines y control de turnos",
+        sol_3_d: "El sistema permite validar rondas y apoyar procesos de entradas y salidas con NFC y reportes automáticos.",
+        sol_4_t: "Bitácora en la nube",
+        sol_4_d: "Registro de comunicaciones, reportes de batería, radios en línea y trazabilidad para auditoría y supervisión.",
+        equipment_title: "Equipos destacados para operaciones exigentes",
+        equipment_desc: "Basado en la propuesta adjunta, CorpoNanos promueve especialmente los modelos iTALK 200 e iTALK 660 para entornos de trabajo de alta demanda.",
+        equipment_card_desc: "Radios robustos con batería de alta capacidad, comunicación ilimitada, canales ilimitados, GPS, Wi‑Fi, botón de pánico y soporte para rondines.",
+        pill_panic: "Botón de pánico",
+        pill_battery: "Batería alta capacidad",
+        key_benefits_title: "Beneficios operativos clave",
+        ben_1_t: "Batería de alta capacidad",
+        ben_1_d: "Mayor continuidad operativa durante toda la jornada.",
+        ben_2_t: "Comunicación ilimitada",
+        ben_2_d: "Sin preocupación por duración de llamadas o estructura de canales.",
+        ben_3_t: "Transmisión por Wi‑Fi",
+        ben_3_d: "Si no hay señal celular, el equipo puede conectarse automáticamente a una red Wi‑Fi disponible.",
+        ben_4_t: "Mayor seguridad",
+        ben_4_d: "GPS, alarmas, rondines y mejor capacidad de respuesta ante incidentes.",
+        notice_models: "¿Necesita otros modelos? iTALKPTT también presenta equipos para seguridad profesional, supervisión de campo, centros de monitoreo, vehículos y radios intrínsecamente seguros para ambientes de mayor riesgo.",
+        panel_title: "Panel de control y consola de despacho en la nube",
+        panel_desc: "La operación no depende únicamente del radio: la verdadera ventaja está en la visibilidad y control que se obtiene desde la plataforma web.",
+        console_title: "Lo que puede hacer desde la consola",
+        con_1_t: "Monitoreo por GPS",
+        con_1_d: "Visualice ubicación, velocidad, ruta, tiempo detenido y geocercas.",
+        con_2_t: "Comunicación directa sin radio",
+        con_2_d: "El despachador puede comunicarse desde computador o tablet con micrófono y audífonos.",
+        con_3_t: "Activar o desactivar radios",
+        con_3_d: "Gestione equipos, canales y acciones remotas desde un mismo panel.",
+        con_4_t: "Bitácora de grabaciones",
+        con_4_d: "Auditoría de comunicaciones y reportes automatizados para supervisión y cumplimiento.",
+        web_access_title: "Acceso web, sin instalar nada",
+        web_access_desc: "Solo se requiere conexión a internet y un navegador. Esto facilita la supervisión en tiempo real, el despacho y la toma de decisiones desde cualquier lugar.",
+        advantages_title: "Ventajas estratégicas para su empresa",
+        advantages_desc: "Además de la información de la propuesta, el sitio de iTALKPTT destaca una evolución hacia seguridad inteligente, supervisión avanzada y herramientas como PatrolSync, ShiftHero, TimeWeb Force, CloudCommand y PredictAI.",
+        adv_1_t: "Más que comunicación",
+        adv_1_d: "La solución busca convertir la comunicación operativa en una ventaja competitiva mediante supervisión, trazabilidad y datos para la toma de decisiones.",
+        adv_2_t: "Operación más segura",
+        adv_2_d: "Reduce dependencia de celulares personales en tareas críticas y fortalece el control en campo para empresas de seguridad, transporte y operaciones intensivas.",
+        adv_3_t: "Escalabilidad empresarial",
+        adv_3_d: "El ecosistema incluye radios profesionales, tecnologías para rondines, gestión de turnos, despacho en la nube e iniciativas de inteligencia predictiva.",
+        contact_title: "Solicite información o una cotización personalizada",
+        contact_desc: "Para conocer disponibilidad, modelos recomendados, implementación en Honduras y una propuesta adaptada a su operación, escriba directamente a CorpoNanos.",
+        contact_cta: "Escribir a diego.ramis@nano-corp.net",
+        general_data_title: "Datos generales de CorpoNanos",
+        phone_label: "Teléfono:",
+        email_label: "Correo general:",
+        sales_label: "Contacto comercial:",
+        footer_sub: "Representante para Honduras de iTALKPTT LATAM",
+        footer_desc: "Sitio estático informativo elaborado para presentar la propuesta comercial y capacidades de la plataforma iTALKPTT en Honduras.",
+        footer_contact: "Contacto"
+      },
+      en: {
+        topbar_left: "CorpoNanos · Representative for Honduras of iTALKPTT LATAM",
+        topbar_right: "Request information or a quote",
+        brand_sub: "Smart radio communication solutions",
+        nav_solution: "Solution",
+        nav_equipment: "Devices",
+        nav_panel: "Control panel",
+        nav_advantages: "Advantages",
+        nav_quote: "Get a quote",
+        hero_eyebrow: "Instant communication · GPS · Supervision · Operational safety",
+        hero_title: "The new generation of mission-critical communication for companies in Honduras",
+        hero_desc: "CorpoNanos brings iTALKPTT LATAM technology to help transform operational communications in security, logistics, transportation, supervision, and field operations. An integrated solution with smart radios, real-time location, patrol tracking, shift control, and a cloud-based console.",
+        hero_cta_primary: "Request a quote",
+        hero_cta_secondary: "View solution",
+        stat_1: "radios on the global iTALKPTT network",
+        stat_2_title: "Nationwide and international",
+        stat_2: "communication wherever cellular or Wi‑Fi coverage is available",
+        stat_3_title: "Full control",
+        stat_3: "visibility, reports, and cloud-based auditability",
+        ideal_title: "Ideal for operations that cannot fail",
+        ideal_1_t: "Unlimited instant communication",
+        ideal_1_d: "Channels and conversations without the limitations of traditional radios.",
+        ideal_2_t: "Real-time monitoring",
+        ideal_2_d: "GPS location, signal status, battery level, and operational activity.",
+        ideal_3_t: "Emergency response",
+        ideal_3_d: "Panic button, protocols, and full event traceability.",
+        ideal_4_t: "Smart supervision",
+        ideal_4_d: "Patrols, attendance, automated reports, and communication logs.",
+        solution_title: "A more complete solution than a traditional radio",
+        solution_desc: "iTALKPTT combines communications, supervision, location tracking, and operational control in a single ecosystem for modern operations.",
+        sol_1_t: "Extended coverage",
+        sol_1_d: "Nationwide and international communication in areas with cellular or Wi‑Fi coverage, without the geographic limits of conventional radio.",
+        sol_2_t: "GPS and geofences",
+        sol_2_d: "Minute-by-minute tracking, routes, idle times, alerts, and control of predefined zones.",
+        sol_3_t: "Patrols and shift control",
+        sol_3_d: "The system validates patrol rounds and supports entry and exit processes with NFC and automated reports.",
+        sol_4_t: "Cloud logbook",
+        sol_4_d: "Communication records, battery reports, online radio status, and traceability for auditing and supervision.",
+        equipment_title: "Featured devices for demanding operations",
+        equipment_desc: "Based on the attached proposal, CorpoNanos especially promotes the iTALK 200 and iTALK 660 models for high-demand work environments.",
+        equipment_card_desc: "Rugged radios with high-capacity batteries, unlimited communication, unlimited channels, GPS, Wi‑Fi, panic button, and patrol support.",
+        pill_panic: "Panic button",
+        pill_battery: "High-capacity battery",
+        key_benefits_title: "Key operational benefits",
+        ben_1_t: "High-capacity battery",
+        ben_1_d: "Greater operational continuity throughout the workday.",
+        ben_2_t: "Unlimited communication",
+        ben_2_d: "No concern about call duration or channel structure.",
+        ben_3_t: "Wi‑Fi transmission",
+        ben_3_d: "If cellular service is unavailable, the device can automatically connect to an available Wi‑Fi network.",
+        ben_4_t: "Enhanced safety",
+        ben_4_d: "GPS, alarms, patrol features, and stronger response capability during incidents.",
+        notice_models: "Need other models? iTALKPTT also offers devices for professional security, field supervision, monitoring centers, vehicles, and intrinsically safe radios for higher-risk environments.",
+        panel_title: "Cloud-based control panel and dispatch console",
+        panel_desc: "The operation does not depend only on the radio: the real advantage comes from the visibility and control available through the web platform.",
+        console_title: "What you can do from the console",
+        con_1_t: "GPS monitoring",
+        con_1_d: "View location, speed, route, idle time, and geofences.",
+        con_2_t: "Direct communication without a radio",
+        con_2_d: "The dispatcher can communicate from a computer or tablet using a microphone and headset.",
+        con_3_t: "Enable or disable radios",
+        con_3_d: "Manage devices, channels, and remote actions from one single panel.",
+        con_4_t: "Recording logbook",
+        con_4_d: "Communication auditing and automated reports for supervision and compliance.",
+        web_access_title: "Web access, nothing to install",
+        web_access_desc: "Only an internet connection and a browser are required. This enables real-time supervision, dispatching, and decision-making from anywhere.",
+        advantages_title: "Strategic advantages for your company",
+        advantages_desc: "In addition to the information from the proposal, the iTALKPTT website highlights an evolution toward intelligent security, advanced supervision, and tools such as PatrolSync, ShiftHero, TimeWeb Force, CloudCommand, and PredictAI.",
+        adv_1_t: "More than communication",
+        adv_1_d: "The solution turns operational communication into a competitive advantage through supervision, traceability, and decision-ready data.",
+        adv_2_t: "Safer operations",
+        adv_2_d: "It reduces dependence on personal cell phones in critical tasks and strengthens field control for security, transportation, and intensive operations.",
+        adv_3_t: "Enterprise scalability",
+        adv_3_d: "The ecosystem includes professional radios, patrol technologies, shift management, cloud dispatching, and predictive intelligence initiatives.",
+        contact_title: "Request information or a customized quote",
+        contact_desc: "To learn about availability, recommended models, implementation in Honduras, and a proposal tailored to your operation, contact CorpoNanos directly.",
+        contact_cta: "Write to diego.ramis@nano-corp.net",
+        general_data_title: "CorpoNanos general information",
+        phone_label: "Phone:",
+        email_label: "General email:",
+        sales_label: "Sales contact:",
+        footer_sub: "Representative for Honduras of iTALKPTT LATAM",
+        footer_desc: "Informational static site prepared to present the commercial proposal and capabilities of the iTALKPTT platform in Honduras.",
+        footer_contact: "Contact"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+      });
+      document.title = lang === 'es'
+        ? 'CorpoNanos | Soluciones iTALKPTT para Honduras'
+        : 'CorpoNanos | iTALKPTT Solutions for Honduras';
+      document.querySelector('meta[name="description"]').setAttribute(
+        'content',
+        lang === 'es'
+          ? 'CorpoNanos es representante para Honduras de iTALKPTT LATAM. Radios inteligentes, comunicación instantánea, GPS, rondines, monitoreo y consola de control en la nube.'
+          : 'CorpoNanos is the representative for Honduras of iTALKPTT LATAM. Smart radios, instant communication, GPS, patrol management, monitoring, and cloud-based control console.'
+      );
+      document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    }
+
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+  </script>
+</body>
+</html>
