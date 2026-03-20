@@ -97,6 +97,469 @@
     }
   </style>
 </head>
+
+
+
+<!-- iTALKPTT LATAM Chatbot Embed -->
+<div id="italkptt-chatbot-root"></div>
+
+<style>
+  #italkptt-chatbot-root * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  .italk-chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #0a2a66, #1f5eff);
+    color: white;
+    font-size: 26px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    z-index: 999999;
+  }
+
+  .italk-chat-window {
+    position: fixed;
+    bottom: 95px;
+    right: 20px;
+    width: 370px;
+    max-width: calc(100vw - 24px);
+    height: 560px;
+    max-height: calc(100vh - 120px);
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    display: none;
+    flex-direction: column;
+    z-index: 999999;
+    border: 1px solid #dfe6f5;
+  }
+
+  .italk-chat-header {
+    background: linear-gradient(135deg, #0a2a66, #1f5eff);
+    color: #fff;
+    padding: 16px;
+  }
+
+  .italk-chat-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .italk-chat-header p {
+    margin: 6px 0 0 0;
+    font-size: 12px;
+    opacity: .92;
+    line-height: 1.4;
+  }
+
+  .italk-chat-body {
+    flex: 1;
+    padding: 14px;
+    background: #f6f8fc;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .italk-msg {
+    max-width: 86%;
+    padding: 11px 13px;
+    border-radius: 14px;
+    line-height: 1.45;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+
+  .italk-msg.bot {
+    background: #fff;
+    color: #1b2430;
+    align-self: flex-start;
+    border: 1px solid #e7edf7;
+  }
+
+  .italk-msg.user {
+    background: #1f5eff;
+    color: #fff;
+    align-self: flex-end;
+  }
+
+  .italk-chat-suggestions {
+    padding: 10px 12px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #f6f8fc;
+  }
+
+  .italk-chip {
+    border: 1px solid #cfd9ee;
+    background: #fff;
+    color: #12326b;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .italk-chat-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #e8edf7;
+    background: #fff;
+  }
+
+  .italk-chat-input {
+    flex: 1;
+    border: 1px solid #ccd6ea;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .italk-chat-send {
+    border: none;
+    background: #0a2a66;
+    color: white;
+    border-radius: 12px;
+    padding: 0 16px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .italk-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .italk-link-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #eef4ff;
+    color: #0a2a66;
+    border: 1px solid #c8d9ff;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    .italk-chat-window {
+      right: 12px;
+      left: 12px;
+      width: auto;
+      bottom: 88px;
+      height: 72vh;
+    }
+
+    .italk-chat-button {
+      right: 12px;
+      bottom: 12px;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const SUPPORT_EMAIL = "andres.salgado@nano-corp.net";
+  const SITE_URL = "https://www.italkpttlatam.com/";
+
+  const knowledgeBase = [
+    {
+      keywords: ["hola", "buenas", "hello", "hi"],
+      answer:
+        "¡Hola! Soy el asistente virtual de iTALKPTT LATAM.\n\nPuedo ayudarte con información sobre radios, PatrolSync, ShiftHero, CloudCommand, TimeWeb Force, Full Duplex, PredictAI e iTALK Security Elite.\n\n¿Sobre qué solución te gustaría consultar?"
+    },
+    {
+      keywords: ["radio", "radios", "equipo", "equipos", "ptt", "push to talk"],
+      answer:
+        "Contamos con soluciones de comunicación profesional Push-to-Talk para operación, coordinación y seguridad.\n\nPuedo orientarte sobre tipos de radios, casos de uso y qué solución podría ajustarse mejor a tu operación.\n\nCuéntame: ¿buscas radios para seguridad, operación, supervisión o ambientes exigentes?"
+    },
+    {
+      keywords: ["intrinsecamente seguro", "intrínsecamente seguro", "atex", "ambiente peligroso", "explosivo"],
+      answer:
+        "Tenemos opciones de radios para entornos que requieren mayor seguridad operativa, incluyendo escenarios industriales o de riesgo.\n\nSi me indicas el tipo de operación, te ayudo a identificar la solución adecuada o puedo derivarte con soporte comercial."
+    },
+    {
+      keywords: ["patrolsync", "patrol", "rondines", "rondas", "guardias"],
+      answer:
+        "PatrolSync ayuda a digitalizar y auditar rondines o patrullajes.\n\nSirve para tener más visibilidad, trazabilidad y control sobre recorridos del personal en campo.\n\nSi quieres, te explico beneficios, caso de uso o te ayudo a solicitar una demo."
+    },
+    {
+      keywords: ["shifthero", "shift hero", "turnos", "asistencia", "control de asistencia"],
+      answer:
+        "ShiftHero está orientado a la automatización y control de turnos/asistencia, con enfoque auditable para operación y seguridad.\n\nEs útil para mejorar seguimiento del personal y reducir procesos manuales.\n\n¿Quieres una explicación funcional o apoyo para contacto comercial?"
+    },
+    {
+      keywords: ["cloudcommand", "cloud command", "supervision", "supervisión", "monitoreo", "monitorear", "nube"],
+      answer:
+        "CloudCommand es una plataforma centralizada en la nube para supervisión y control operativo.\n\nPermite consolidar información y facilitar la gestión desde un entorno central.\n\nPuedo ayudarte a entender para qué tipo de empresa aplica mejor."
+    },
+    {
+      keywords: ["timeweb", "timeweb force", "rrhh", "rh", "nomina", "nómina", "recursos humanos"],
+      answer:
+        "TimeWeb Force está enfocado en gestión operativa de RR.HH., asistencia, turnos y procesos relacionados con personal, especialmente en seguridad privada.\n\nSi quieres, te explico cómo se complementa con otras soluciones del portafolio."
+    },
+    {
+      keywords: ["full duplex", "duplex", "manos libres", "simultanea", "simultánea"],
+      answer:
+        "Full Duplex permite comunicación simultánea en tiempo real, ideal cuando se requiere interacción continua y ágil.\n\nEs útil en operaciones que necesitan coordinación fluida sin esperar turnos de habla."
+    },
+    {
+      keywords: ["predictai", "predict ai", "ia", "inteligencia artificial", "predictiva"],
+      answer:
+        "PredictAI está orientado a seguridad predictiva apoyada por inteligencia artificial.\n\nPuede aportar análisis e identificación temprana de situaciones relevantes para la operación.\n\nSi me dices tu industria, te doy un ejemplo de uso."
+    },
+    {
+      keywords: ["security elite", "elite", "certificacion", "certificación"],
+      answer:
+        "iTALK Security Elite es un programa de certificación para empresas de seguridad que buscan diferenciarse y fortalecer su propuesta de valor.\n\nPuedo darte una explicación general o ayudarte a solicitar más información."
+    },
+    {
+      keywords: ["precio", "precios", "costo", "costos", "cotizacion", "cotización", "comprar", "adquirir"],
+      answer:
+        "Para precios o cotizaciones, lo mejor es levantar tu requerimiento con el equipo de soporte/comercial.\n\nPuedo prepararte el correo de contacto ahora mismo."
+    },
+    {
+      keywords: ["demo", "asesoria", "asesoría", "contacto", "vendedor", "ventas", "hablar con alguien", "soporte"],
+      answer:
+        "Claro. Puedo ayudarte a contactar al equipo de soporte/comercial por correo para una demo, asesoría o seguimiento personalizado."
+    }
+  ];
+
+  const fallbackAnswer =
+    "No encontré una respuesta exacta para esa consulta.\n\nPuedo ayudarte a contactar al equipo de soporte para que te respondan directamente.";
+
+  const root = document.getElementById("italkptt-chatbot-root");
+
+  root.innerHTML = `
+    <button class="italk-chat-button" id="italkOpenBtn" aria-label="Abrir chat">💬</button>
+
+    <div class="italk-chat-window" id="italkChatWindow">
+      <div class="italk-chat-header">
+        <h3>Asistente iTALKPTT LATAM</h3>
+        <p>Respondo consultas sobre productos y soluciones. Si lo prefieres, también te ayudo a contactar soporte.</p>
+      </div>
+
+      <div class="italk-chat-body" id="italkChatBody"></div>
+
+      <div class="italk-chat-suggestions" id="italkSuggestions">
+        <button class="italk-chip">Radios</button>
+        <button class="italk-chip">PatrolSync</button>
+        <button class="italk-chip">ShiftHero</button>
+        <button class="italk-chip">CloudCommand</button>
+        <button class="italk-chip">PredictAI</button>
+        <button class="italk-chip">Cotización</button>
+      </div>
+
+      <div class="italk-chat-footer">
+        <input
+          type="text"
+          class="italk-chat-input"
+          id="italkChatInput"
+          placeholder="Escribe tu consulta..."
+        />
+        <button class="italk-chat-send" id="italkSendBtn">Enviar</button>
+      </div>
+    </div>
+  `;
+
+  const openBtn = document.getElementById("italkOpenBtn");
+  const chatWindow = document.getElementById("italkChatWindow");
+  const chatBody = document.getElementById("italkChatBody");
+  const chatInput = document.getElementById("italkChatInput");
+  const sendBtn = document.getElementById("italkSendBtn");
+  const suggestions = document.getElementById("italkSuggestions");
+
+  let isOpen = false;
+
+  function toggleChat() {
+    isOpen = !isOpen;
+    chatWindow.style.display = isOpen ? "flex" : "none";
+    openBtn.innerHTML = isOpen ? "×" : "💬";
+    if (isOpen && chatBody.children.length === 0) {
+      addBotMessage(
+        "¡Hola! Soy el asistente virtual de iTALKPTT LATAM.\n\nPuedo responder consultas sobre soluciones y productos del sitio. Si no encuentro respuesta o quieres atención personalizada, también te ayudo a contactar soporte."
+      );
+    }
+  }
+
+  function addMessage(text, sender, extraActions) {
+    const msg = document.createElement("div");
+    msg.className = `italk-msg ${sender}`;
+    msg.textContent = text;
+    chatBody.appendChild(msg);
+
+    if (extraActions && extraActions.length) {
+      const actionsWrap = document.createElement("div");
+      actionsWrap.className = "italk-actions";
+      extraActions.forEach(action => {
+        const a = document.createElement("a");
+        a.className = "italk-link-btn";
+        a.href = action.href;
+        a.textContent = action.label;
+        if (action.targetBlank) {
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+        }
+        actionsWrap.appendChild(a);
+      });
+      chatBody.appendChild(actionsWrap);
+    }
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function addBotMessage(text, extraActions) {
+    addMessage(text, "bot", extraActions);
+  }
+
+  function addUserMessage(text) {
+    addMessage(text, "user");
+  }
+
+  function normalize(text) {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+
+  function wantsSupport(text) {
+    const t = normalize(text);
+    const triggers = [
+      "correo",
+      "mail",
+      "email",
+      "soporte",
+      "contactar",
+      "contacto",
+      "asesor",
+      "asesoria",
+      "asesoría",
+      "demo",
+      "cotizacion",
+      "cotización",
+      "hablar con alguien",
+      "ejecutivo",
+      "ventas"
+    ];
+    return triggers.some(k => t.includes(k));
+  }
+
+  function buildMailto(userMessage) {
+    const subject = encodeURIComponent("Consulta desde chatbot web iTALKPTT LATAM");
+    const body = encodeURIComponent(
+`Hola Andrés,
+
+Se ha generado una consulta desde el chatbot del sitio web.
+
+Consulta del visitante:
+"${userMessage}"
+
+Por favor dar seguimiento.
+
+Sitio de referencia:
+${SITE_URL}`
+    );
+    return `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+  function findAnswer(userText) {
+    const t = normalize(userText);
+    let bestMatch = null;
+    let bestScore = 0;
+
+    for (const item of knowledgeBase) {
+      let score = 0;
+      item.keywords.forEach(keyword => {
+        if (t.includes(normalize(keyword))) score++;
+      });
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = item;
+      }
+    }
+
+    return bestScore > 0 ? bestMatch.answer : null;
+  }
+
+  function handleUserMessage() {
+    const userText = chatInput.value.trim();
+    if (!userText) return;
+
+    addUserMessage(userText);
+    chatInput.value = "";
+
+    const matchedAnswer = findAnswer(userText);
+
+    if (wantsSupport(userText)) {
+      addBotMessage(
+        "Perfecto. Te dejo el acceso para enviar un correo a soporte con tu consulta.",
+        [
+          { label: "Enviar correo a soporte", href: buildMailto(userText) },
+          { label: "Ver sitio web", href: SITE_URL, targetBlank: true }
+        ]
+      );
+      return;
+    }
+
+    if (matchedAnswer) {
+      const needsEscalationHint =
+        /precio|precios|costo|costos|cotizacion|cotización|demo|contacto|soporte/i.test(userText);
+
+      if (needsEscalationHint) {
+        addBotMessage(matchedAnswer, [
+          { label: "Contactar soporte", href: buildMailto(userText) }
+        ]);
+      } else {
+        addBotMessage(matchedAnswer, [
+          { label: "Contactar soporte", href: buildMailto(userText) }
+        ]);
+      }
+    } else {
+      addBotMessage(fallbackAnswer, [
+        { label: "Enviar consulta a soporte", href: buildMailto(userText) },
+        { label: "Visitar sitio", href: SITE_URL, targetBlank: true }
+      ]);
+    }
+  }
+
+  openBtn.addEventListener("click", toggleChat);
+  sendBtn.addEventListener("click", handleUserMessage);
+
+  chatInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") handleUserMessage();
+  });
+
+  suggestions.addEventListener("click", function (e) {
+    if (e.target.classList.contains("italk-chip")) {
+      chatInput.value = e.target.textContent;
+      handleUserMessage();
+    }
+  });
+})();
+</script>
+
+
+
+
 <body>
   <div class="topbar">
     <div class="container">
